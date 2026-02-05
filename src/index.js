@@ -8,11 +8,22 @@ async function getWeatherData(location) {
   try {
     const response = await fetch(API_URL + `&appid=${API_KEY}` + `&q=${location}`);
     const data = await response.json();
-    console.log(data);
+    const weather = processWeatherData(data);
+    console.log(weather);
   }
   catch(error) {
     console.log(error);
   }
+}
+
+function processWeatherData(data) {
+  const weather = {
+    location: data.name,
+    temperature: data.main.temp,
+    humidity: data.main.humidity,
+    windSpeed: data.wind.speed
+  };
+  return weather;
 }
 
 getWeatherData('dhaka');
