@@ -46,8 +46,7 @@ function processWeatherData(data) {
     humidity: data.main.humidity,
     windSpeed: data.wind.speed,
     feelsLike: Math.round(data.main.feels_like),
-    description: data.weather[0].main,
-    icon: data.weather[0].icon
+    description: data.weather[0].main
   };
   return weather;
 }
